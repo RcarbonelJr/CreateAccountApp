@@ -1,5 +1,20 @@
+/* Author: Randall Carbonel
+ * Date: 7/27/24
+ * Class: ASD216 - Java Programming
+ * Assignment: Enhance the Create Account application presented in this chapter so it gets a valid email address and a
+ *             valid phone number
+ * Specifications:
+ *      - Create and use a method to get a valid email address. To be valid, the address has to contain an @ sign and
+ *        ends with “.com”.
+ *      - Create and use a method to get a valid phone number. To do that, remove all spaces, dashes, parentheses, and
+ *        periods from the number. Then, check to make sure the number consists of 10 characters that are digits.
+ *      - When all the entries are valid, display the message shown below, including the phone number format that uses
+ *        dots to group the digits
+ *          - Hi (fistName), thanks for creating an account. We'll text your confirmation code to this number:
+ *            xxx.xxx.xxxx
+ */
+
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class CreateAccountApp {
     
