@@ -15,10 +15,10 @@ public class CreateAccountApp {
         String emailAddress = getEmailAddress();
         System.out.println();
 
-        String getPhoneNumber = getPhoneNumber();
+        String phoneNumber = getPhoneNumber();
         System.out.println();
         
-        String msg = getSuccessMessage(fullName);
+        String msg = getSuccessMessage(fullName, phoneNumber);
         System.out.println(msg);
     }
 
@@ -118,10 +118,18 @@ public class CreateAccountApp {
         }
     }
     
-    private static String getSuccessMessage(String fullName) {
+    private static String getSuccessMessage(String fullName, String phoneNumber) {
         int index = fullName.indexOf(" ");
         String firstName = fullName.substring(0,1).toUpperCase() +  
-                           fullName.substring(1, index).toLowerCase();        
-        return "Hi " + firstName + ", thanks for creating an account!\n";
+                           fullName.substring(1, index).toLowerCase();
+
+        String areaCode = phoneNumber.substring(0,3);
+        String centralOfficeCode = phoneNumber.substring(3,6);
+        String lineNumber = phoneNumber.substring(6);
+
+        String fullNumber = areaCode + "." + centralOfficeCode + "." + lineNumber;
+
+        return  "Hi " + firstName + ", thanks for creating an account. We'll text your confirmation code to this " +
+                "number: " + fullNumber;
     }
 }
