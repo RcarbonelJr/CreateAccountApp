@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class CreateAccountApp {
     
@@ -9,6 +10,12 @@ public class CreateAccountApp {
         System.out.println();
         
         String password = getPassword();
+        System.out.println();
+
+        String emailAddress = getEmailAddress();
+        System.out.println();
+
+        String getPhoneNumber = getPhoneNumber();
         System.out.println();
         
         String msg = getSuccessMessage(fullName);
@@ -53,6 +60,60 @@ public class CreateAccountApp {
             } else {
                 System.out.println("Password must be 8 characters or more\n" 
                     + "with at least one digit and one uppercase letter.\n");
+            }
+        }
+    }
+
+    private static String getEmailAddress() {
+        while(true) {
+            System.out.print("Enter E-mail address: ");
+            String emailAddress = sc.nextLine().trim();
+
+            boolean isValid = false;
+
+            if (emailAddress.contains("@") &&  emailAddress.endsWith(".com")) {
+                isValid = true;
+            } else {
+                System.out.println("Please enter a valid e-mail address.");
+            }
+
+            if (isValid) {
+                return emailAddress;
+            }
+        }
+    }
+
+    private static String getPhoneNumber() {
+        while (true) {
+            System.out.print("Enter phone number: ");
+            String phoneNumber = sc.nextLine().trim();
+
+            boolean isCorrectLength = false;
+            boolean isDigits = true;
+
+            phoneNumber = phoneNumber.replace(" ", "");
+            phoneNumber = phoneNumber.replace("-", "");
+            phoneNumber = phoneNumber.replace("(", "");
+            phoneNumber = phoneNumber.replace(")", "");
+            phoneNumber = phoneNumber.replace(".", "");
+
+            if (phoneNumber.length() == 10) {
+                isCorrectLength = true;
+            }
+
+            for (char c: phoneNumber.toCharArray()) {
+                if (Character.isDigit(c)) {
+                    continue;
+                } else {
+                    isDigits = false;
+                    break;
+                }
+            }
+
+            if (isCorrectLength && isDigits) {
+                return phoneNumber;
+            } else {
+                System.out.println("Please enter a 10-digit phone number.");
             }
         }
     }
